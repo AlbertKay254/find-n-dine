@@ -1,0 +1,14 @@
+.menu-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu-container {
+    margin-top: 42px;
+}
+
+.item-tag {
+    color: var(--price-color);
+}
+

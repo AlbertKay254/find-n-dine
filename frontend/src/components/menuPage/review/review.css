@@ -1,0 +1,67 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 12px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 18px;
+    border-radius: 6px;
+    background: var(--form-color);
+    border: 1px solid var(--border-white);
+    resize: none;
+    
+}
+
+.review-form{
+    margin: 32px;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+}
+
+.reviewer-icon img {
+    height: 74px;
+    width: 74px;
+    border-radius: 50%;
+}
+
+
+.reviewer-icon {
+    background: var(--price-color);
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.reviewer {
+    font-weight: 600;
+    font: 44px;
+}
+
+.review-post {
+    font-weight: 300;
+    color: var(--font-grey);
+}
+
+h2 {
+    font: 44px;
+    font-weight: 600;
+}
+
+.review-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

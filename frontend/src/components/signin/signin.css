@@ -1,0 +1,83 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center; 
+    height: 100vh;
+}
+
+.logo-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin-container {
+    background:linear-gradient(#9ee8df95, #e9db8c);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    /*background: #fff;*/
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+
+.signin-form .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    text-align: left;
+    padding: 12px;
+    margin-bottom:-5px;
+    font-weight: 750;
+ }
+
+input {
+    width: 150%;
+    height: 30px;
+    margin: 5px;
+    border-radius: 15px;
+    
+ }
+
+ button {
+    margin: 10px 2px;
+    border: none;
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 5%;
+    cursor: pointer;
+    border-radius: 15px;
+ }
+
+.register-btn {
+    background: none;
+    color: rgb(33, 39, 60);
+    text-decoration: underline;
+    padding: 10px;
+ }
+
+ .bck {
+    background-image: url(../../assets/rest1.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+ }
+
+ .logo-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15%;
+    position: inherit;
+ }

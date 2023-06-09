@@ -1,0 +1,28 @@
+.header-searchbar {
+    width: 130%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    font-weight: 550;
+    color: var(--heading-text);
+}
+
+.location-pin {
+    color: var(--location-red);
+}
+
+.location-pin-2 {
+    color: var(--location-blue);
+    position: absolute;
+}
+

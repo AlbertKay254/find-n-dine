@@ -1,0 +1,45 @@
+.menupage-header {
+    display: flex;
+    flex-direction: row;
+}
+
+img{
+    height: 135px;
+    width: 135px;
+    border-radius: 10px;
+    margin: 4px;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+}
+
+.brand-description {
+   justify-content: center;
+   margin-left: 10px;
+}
+
+.pin-icon {
+    color: var(--icon-red);
+    font-size: 20px;
+   /* margin-right: 12px;*/
+}
+
+h3 {
+    font-weight: 800;
+}
+
+p {
+    margin: 4px;
+    font-weight: 700;
+    font: var(--heading-text);
+    font-size: 14px;
+}
+
+.category {
+    font-weight: 800;
+    color: var(--heading-text);
+    
+}

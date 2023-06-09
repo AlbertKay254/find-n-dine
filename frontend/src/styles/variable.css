@@ -1,0 +1,16 @@
+#root{
+    --primary-box-shadow:#c8c3c3;
+    --border-white: rgb(232, 232, 232);
+    --primary-bg: rgb(255, 255, 255); 
+    --font-grey: #828282;
+    --grey: #aaa3a3;
+    --icon-red: #da616d; 
+    --inactive-text: #696969;
+    --filter-text: #9c9c9c;
+    --heading-text: #1c1c1c;
+    --box-shadow: #d3cece;
+    --price-color: #a09000;
+    --form-color: #ededed;
+    --location-red: #fd0000;
+    --location-blue: #00a6b2;
+}
