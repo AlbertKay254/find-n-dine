@@ -6,11 +6,12 @@ import MenuPage from './components/menuPage/menuPage'
 import GpsSearch from './components/gpsSearch/gpsSearch';
 import Map from './components/gpsSearch/map/map';
 import UploadPage from './components/uploadPage/uploadPage';
+import Firstpage from './pages/firstpage';
 
 const App = () => {
   return (
        <>
-        < UploadPage/>
+        < Firstpage/>
        </>
   )
 }
