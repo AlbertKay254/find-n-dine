@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
+
 import Signup from '../components/signup/signup'
 import SignIn from '../components/signin/signin'
-
 
 const Firstpage = () => {
 

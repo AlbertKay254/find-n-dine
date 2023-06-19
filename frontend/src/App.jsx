@@ -7,11 +7,13 @@ import GpsSearch from './components/gpsSearch/gpsSearch';
 import Map from './components/gpsSearch/map/map';
 import UploadPage from './components/uploadPage/uploadPage';
 import Firstpage from './pages/firstpage';
+import Review from './components/menuPage/review/review';
+
 
 const App = () => {
   return (
        <>
-        < Firstpage/>
+        < Review />
        </>
   )
 }
