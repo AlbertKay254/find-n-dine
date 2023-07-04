@@ -9,7 +9,6 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, name, pass);
 
     fetch("http://localhost:4444/register", {
       method: "POST",

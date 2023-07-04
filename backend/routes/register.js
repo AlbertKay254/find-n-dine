@@ -7,9 +7,11 @@ router.post("/register", async (req, res) => {
   const user = new User({
     email,
     name,
-    pass,
+    password: pass,
   });
-  user.save().catch((err) => {});
+  user.save().catch((err) => {
+    console.log(err);
+  });
 });
 
 router.get("/register", async (req, res) => {

@@ -5,14 +5,14 @@ import Rest from '../../assets/rest.png'
 import Dine from '../../assets/dineout.png'
 import Night from '../../assets/nightlife.png'
 import Bake from '../../assets/bakery.png'
-import Take from '../../assets/fastfood.png'
+//import Take from '../../assets/fastfood.png'
 import Grocery from '../../assets/grocery.png'
 
 import Rest2 from '../../assets/rest2b.png'
 import Dine2 from '../../assets/dineout2.png'
 import Night2 from '../../assets/nightlife2.png'
 import Bake2 from '../../assets/bakery2.png'
-import Take2 from '../../assets/fastfood2.png'
+//import Take2 from '../../assets/fastfood2.png'
 import Grocery2 from '../../assets/grocery2.png'
 
 
@@ -45,13 +45,13 @@ const tabs = [
       backdrop:" #FCEEC0",
       inactive_image: Bake2,
     },
-    {
-      id:5,
-      name: "Takeout",
-      active_img: Take,
-      backdrop:" #FCEEC0",
-      inactive_image: Take2,
-    },
+    //{
+    //  id:5,
+    //  name: "Takeout",
+    //  active_img: Take,
+    //  backdrop:" #FCEEC0",
+    //  inactive_image: Take2,
+    //},
     {
       id:6,
       name: "Groceries",

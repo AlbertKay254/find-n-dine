@@ -17,6 +17,18 @@ const userDetailsSchema = new Schema(
       type: String,
       required: true,
     },
+    created: {
+      type: Date,
+      required: function () {
+        return Date.now();
+      },
+    },
+    last_modified: {
+      type: Date,
+      required: function () {
+        return Date.now();
+      },
+    },
   },
   {
     collection: "UserInfo",

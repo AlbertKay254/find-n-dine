@@ -18,10 +18,21 @@ const restaurantDetailsSchema = new Schema(
       required: true,
     },
     menuItem: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
+    },
+    created: {
+      type: Date,
+      required: function () {
+        return Date.now();
       },
-
+    },
+    last_modified: {
+      type: Date,
+      required: function () {
+        return Date.now();
+      },
+    },
   },
   {
     collection: "RestaurantInfo",
