@@ -1,31 +1,17 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { model, Schema } = mongoose;
 
 const locationDetails = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
   address: {
     type: String,
     required: true,
   },
-  location: {
+  latitude: {
     type: String,
-    required: true,
   },
-  created: {
-    type: Date,
-    required: function () {
-      return Date.now();
-    },
-  },
-  last_modified: {
-    type: Date,
-    required: function () {
-      return Date.now();
-    },
+  longitude: {
+    type: String,
   },
 });
 
-module.exports = new Schema("LocationDetails", locationDetails);
+module.exports = model("LocationDetails", locationDetails);

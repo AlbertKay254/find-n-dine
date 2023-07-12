@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const restaurantDetailsSchema = new Schema(
   {
@@ -8,30 +8,36 @@ const restaurantDetailsSchema = new Schema(
       unique: true,
       required: true,
     },
+
     location: {
+      type: Schema.Types.ObjectId,
+      unique: true,
+      required: true,
+    },
+
+    contact: {
       type: String,
       unique: true,
       required: true,
     },
+
+    website: {
+      type: String,
+      unique: true,
+    },
+
+    time_open: {
+      type: String,
+      required: true,
+    },
+
     category: {
-      type: String,
+      type: Array,
       required: true,
     },
-    menuItem: {
-      type: String,
-      required: true,
-    },
-    created: {
-      type: Date,
-      required: function () {
-        return Date.now();
-      },
-    },
-    last_modified: {
-      type: Date,
-      required: function () {
-        return Date.now();
-      },
+
+    menu: {
+      type: Array,
     },
   },
   {
@@ -39,4 +45,4 @@ const restaurantDetailsSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("RestaurantInfo", restaurantDetailsSchema);
+module.exports = model("RestaurantInfo", restaurantDetailsSchema);

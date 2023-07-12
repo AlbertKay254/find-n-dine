@@ -21,6 +21,7 @@ app.use(require("./routes/sign-in"));
 app.use(require("./routes/user"));
 app.use(require("./routes/upload"));
 app.use(require("./routes/review"));
+app.use(require("./routes/restaurant"));
 
 app.use(async (req, res, next) => {
   console.log("Not found");

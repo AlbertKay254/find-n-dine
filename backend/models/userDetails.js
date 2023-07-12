@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const userDetailsSchema = new Schema(
   {
@@ -17,22 +17,10 @@ const userDetailsSchema = new Schema(
       type: String,
       required: true,
     },
-    created: {
-      type: Date,
-      required: function () {
-        return Date.now();
-      },
-    },
-    last_modified: {
-      type: Date,
-      required: function () {
-        return Date.now();
-      },
-    },
   },
   {
     collection: "UserInfo",
   }
 );
 
-module.exports = mongoose.model("UserInfo", userDetailsSchema);
+module.exports = model("UserInfo", userDetailsSchema);

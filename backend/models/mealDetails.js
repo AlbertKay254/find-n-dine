@@ -1,30 +1,15 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const mealDetails = new Schema({
   name: {
     type: String,
     required: true,
   },
-  description: {
-    type: String,
+  price: {
+    type: Number,
     required: true,
-  },
-  allergens: {
-    type: Array,
-  },
-  created: {
-    type: Date,
-    required: function () {
-      return Date.now();
-    },
-  },
-  last_modified: {
-    type: Date,
-    required: function () {
-      return Date.now();
-    },
   },
 });
 
-module.exports = mongoose.model("MealDetails", mealDetails);
+module.exports = model("MealDetails", mealDetails);
