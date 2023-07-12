@@ -9,7 +9,7 @@ const diningout = () => {
     <div>
       < DiningoutCollections />
       < TopbrandsDiningOut />
-      < Explore />
+     
     </div>
   )
 }

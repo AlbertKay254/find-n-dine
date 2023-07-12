@@ -3,6 +3,7 @@ import "./restaurant.css";
 import Restaurantcollections from "../restaurant/restaurantcollection/restaurantcollection";
 import Topbrands from "./restaurantcollection/topbrands/topbrands";
 import Explore from "./explore/explore";
+import GpsSearch from "../../gpsSearch/gpsSearch";
 
 const restaurantFilters = [
   {
@@ -28,7 +29,6 @@ const restaurant = () => {
     <div>
       <Restaurantcollections />
       <Topbrands />
-      <Explore />
     </div>
   );
 };

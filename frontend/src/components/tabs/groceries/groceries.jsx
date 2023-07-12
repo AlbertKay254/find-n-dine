@@ -9,7 +9,7 @@ const groceries = () => {
     <div>
       <GroceriesCollection />
       <TopbrandsGroceries />
-      <Explore />
+     
     </div>
   );
 }

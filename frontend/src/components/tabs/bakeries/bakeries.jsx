@@ -9,7 +9,7 @@ const bakeries = () => {
     <div>
       < BakeriesCollection />
       < TopbrandsBakeries />
-      < Explore />
+      
     </div>
   )
 }

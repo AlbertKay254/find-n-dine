@@ -9,7 +9,7 @@ const nightlife = () => {
     <div>
       <NightlifeCollection />
       <TopbrandsNightlife />
-      < Explore />
+      
     </div>
   );
 }

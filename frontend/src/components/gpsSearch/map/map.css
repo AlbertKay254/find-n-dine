@@ -26,3 +26,17 @@
     position: absolute;
 }
 
+.container {
+    height: 8ovh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.map{
+    height: 70vh;
+}
+
+h2{justify-content: center;}
+
