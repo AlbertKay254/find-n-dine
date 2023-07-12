@@ -7,10 +7,11 @@ router.post("/register", async (req, res) => {
   const user = new User({
     email,
     name,
-    password: pass,
+    pass,
   });
   user.save().catch((err) => {
     console.log(err);
+    res.send("Error creating user");
   });
 });
 
