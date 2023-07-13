@@ -5,7 +5,6 @@ const explore = () => {
   return (
     <div className='explore-container max-width'>
       <p>Would you like to upload your restaurant?</p>
-      <button className='btn'>upload</button>
     </div>
   )
 }

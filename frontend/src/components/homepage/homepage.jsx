@@ -31,7 +31,7 @@ const Homepage = () => {
       <Taboptions activeTab={activeTab} setActiveTab={setActiveTab} />
       {getCorrectScreen(activeTab)}
       <Explore />
-      <MenuPage/>
+      <UploadPage />
       <Maps />
 
       <Footer />

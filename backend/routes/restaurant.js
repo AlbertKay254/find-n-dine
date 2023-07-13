@@ -24,58 +24,73 @@ router.post("/restaurant", async (req, res) => {
     latitude,
   });
 
-  location.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating location");
-  });
+  location
+    .save()
+    .then(() => {
+      const restaurant = new Restaurant({
+        name,
+        location: location._id,
+        contact,
+        website,
+        time_open,
+        category,
+      });
+      restaurant
+        .save()
+        .then(() => {
+          res.json(restaurant);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.send("Error creating restaurant");
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send("Error creating location");
+    });
+});
 
-  const restaurant = new Restaurant({
-    name,
-    location: location._id,
-    contact,
-    website,
-    time_open,
-    category,
-  });
-
-  restaurant.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating restaurant");
-  });
-
+router.get("/restaurants", async (req, res) => {
+  const restaurant = await Restaurant.find();
   res.json(restaurant);
 });
 
 router.get("/restaurant/:id", async (req, res) => {
-  const restaurant = await Restaurant.findById(req.params.id);
-  res.json(restaurant);
+  const restaurants = await Restaurant.findById(req.params.id);
+  res.json(restaurants);
 });
 
 router.post("/restaurant/:id/meal", async (req, res) => {
-  const { name, price } = req.body;
-
   const { menu } = req.body;
-
   const restaurant = await Restaurant.findById(req.params.id);
-  console.log(restaurant);
 
-  for (let i = 0; i < menu.length; i++) {
-    const meal = Meal({ name: menu[i].name, price: menu[i].price });
-
-    meal.save().catch((err) => {
-      console.log(err);
-      res.send;
-    });
-
-    restaurant.menu.push(meal);
+  if (!restaurant || !menu) {
+    res.sendStatus(400);
+    return;
   }
 
-  restaurant.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating meal");
-  });
+  for (let i = 0; i < menu.length; i++) {
+    const meal = Meal({ mealName: menu[i].mealName, price: menu[i].price });
+    meal
+      .save()
+      .then(() => {
+        restaurant.menu.push(meal);
+      })
+      .catch((err) => {
+        console.log(e);
+      });
+  }
 
-  res.json(restaurant.menu);
+  restaurant
+    .save()
+    .then(() => {
+      res.json(restaurant.menu);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send("Error creating meal");
+    });
 });
 
 module.exports = router;
