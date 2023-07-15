@@ -97,7 +97,7 @@ const UploadPage = (props) => {
         <input
           value={category}
           type="text"
-          placeholder="fast food, restaurant, bakery, nightlife"
+          placeholder="fast food, restaurant, bakery, nightlife, grocery"
           onChange={(event) => {
             setCategory(event.target.value);
           }}

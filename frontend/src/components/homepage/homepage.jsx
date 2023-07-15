@@ -9,6 +9,7 @@ import UploadPage from "../uploadPage/uploadPage";
 import Maps from "../gpsSearch/map/maps";
 import Explore from "../explore/explore";
 import MenuPage from "../menuPage/menuPage";
+import RestaurantList from "../restaurantList/restaurantList";
 
 import Restaurant from "../../components/tabs/restaurant/restaurant";
 import Diningout from "../../components/tabs/diningout/diningout";
@@ -32,8 +33,7 @@ const Homepage = () => {
       {getCorrectScreen(activeTab)}
       <Explore />
       <UploadPage />
-      <Maps />
-
+      <Maps/>
       <Footer />
     </div>
   );

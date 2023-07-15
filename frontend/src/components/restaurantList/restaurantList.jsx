@@ -21,17 +21,14 @@ const RestaurantList = () => {
         .then((data) => {
           console.log(data, "restaurant has been recieved");
         }); 
-      
   }
 
   return (
     <div className='restaurant-list-container max-width'>
-      <h2>Restaurant List:</h2> 
-      <List>
+      <h3>Restaurant List:</h3> 
         <ul>
             
         </ul>
-      </List>
     </div>
   )
 }

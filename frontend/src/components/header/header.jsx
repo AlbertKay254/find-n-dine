@@ -31,13 +31,12 @@ function header() {
                 placeholder='Search for restaurant, caffe or fast food' 
                 className="search-input"
               />
+              <button className='search-btn'>Search</button>
           </div>
         </div>
 
         <div className="profile-wrapper">
-            <img src={profile} alt="profile" className="profile-image" />
-            <span className='header-username'>Albert</span>
-            <MdOutlineKeyboardArrowDown className="absolute-center profile-icon"/>
+           <button className='btn'>Logout</button>
         </div>
       </div>
 
