@@ -16,7 +16,6 @@ const Signin = (props) => {
     async (e) => {
       const userNotFoundToast = () => toast.error("User not found");
       const welcomeToast = () => toast.success("Welcome");
-      const somethingWentWrongToast = () => toast.error("Something went wrong");
 
       // Prevent default action of the form [The page reloads after this function terminates if we remove this]
       e.preventDefault();

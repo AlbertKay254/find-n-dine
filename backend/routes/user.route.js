@@ -8,7 +8,7 @@ router.post("/auth", async (req, res) => {
   if (user) {
     res.json(user);
   } else {
-    res.sendStatus(400);
+    res.status(400).send("Invalid credentials");
   }
 });
 
@@ -24,9 +24,9 @@ router.post("/user", async (req, res) => {
     pass,
   });
   user.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating user");
+    res.status(400).send(err.message);
   });
+  res.json(user);
 });
 
 module.exports = router;

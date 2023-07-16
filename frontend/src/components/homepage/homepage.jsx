@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import "./homepage.css";
 
 import Header from "../../components/header/header";
@@ -14,12 +15,31 @@ import Bakeries from "../../components/tabs/bakeries/bakeries";
 import Groceries from "../../components/tabs/groceries/groceries";
 
 import useAuth from "../../hooks/useAuth";
+import apiCall from "../../helpers/api";
 
 const Homepage = () => {
   const [activeTab, setActiveTab] = useState("Restaurant");
+  const [restaurant, setRestaurant] = useState([]);
+  const somethingWentWrongToast = () => toast.error("Something went wrong");
+
   const user = useAuth();
 
-  console.log("User is ", user);
+  useEffect(() => {
+    const getRestaurants = async () => {
+      const response = await apiCall("get", "/api/restaurants");
+      if (!response || response.status !== 200) {
+        somethingWentWrongToast();
+        return;
+      }
+      setRestaurant(response.data);
+    };
+
+    getRestaurants();
+  }, []);
+
+  useEffect(() => {
+    console.log("Restaurants : ", restaurant);
+  }, [restaurant]);
 
   if (!user) return null;
 
