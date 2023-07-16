@@ -1,31 +1,37 @@
 .max-width {
-    max-width: 1100px;
-    margin: 0px auto;
+  max-width: 1100px;
+  margin: 0px auto;
 }
 
 .min-width {
-    max-width: 900px;
-    margin: 0px auto;
+  max-width: 900px;
+  margin: 0px auto;
 }
 
 .absolute-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .collection-title {
-    font-size: 25px;
-    color: var(--heading-text);
-    margin-bottom: 10px;
-    margin-top: 20px;
-    font-weight: 600;
+  font-size: 25px;
+  color: var(--heading-text);
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: 600;
 }
 
-.slick-next:before, .slick-prev:before {
-    color: var(--icon-red);
+.slick-next:before,
+.slick-prev:before {
+  color: var(--icon-red);
+}
+
+#outlined-button {
+  background-color: transparent;
+  border: 1px solid var(--icon-red);
 }

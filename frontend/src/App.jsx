@@ -1,21 +1,16 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
+
 import Signin from "./components/signin/signin";
 import Signup from "./components/signup/signup";
 import Homepage from "./components/homepage/homepage";
-import MenuPage from "./components/menuPage/menuPage";
-import GpsSearch from "./components/gpsSearch/gpsSearch";
-import Map from "./components/gpsSearch/map/map";
-import UploadPage from "./components/uploadPage/uploadPage";
-import Firstpage from "./pages/firstpage";
-import Review from "./components/menuPage/review/review";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CookiesProvider, useCookies } from "react-cookie";
-
-export const UserContext = React.createContext(undefined);
+import MenuUploadPage from "./components/uploadPage/menuDetails";
+import { AppContextWrapper } from "./context/global-context";
+import LogoutPage from "./components/logout/logout";
+import RestaurantDetailsForm from "./components/uploadPage/restaurantDetails";
 
 const App = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const user = useContext(UserContext) || cookies.user;
   const router = createBrowserRouter([
     {
       path: "/",
@@ -29,14 +24,26 @@ const App = () => {
       path: "/signup",
       element: <Signup />,
     },
+    {
+      path: "/upload/details",
+      element: <RestaurantDetailsForm />,
+    },
+    {
+      path: "/upload/menu/:id",
+      element: <MenuUploadPage />,
+    },
+    {
+      path: "/logout",
+      element: <LogoutPage />,
+    },
   ]);
 
   return (
-    <UserContext.Provider value={user}>
+    <AppContextWrapper>
       <CookiesProvider>
         <RouterProvider router={router} />
       </CookiesProvider>
-    </UserContext.Provider>
+    </AppContextWrapper>
   );
 };
 

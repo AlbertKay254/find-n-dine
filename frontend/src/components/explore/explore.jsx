@@ -1,12 +1,14 @@
-import React from 'react'
-import './explore.css'
+import React from "react";
+import "./explore.css";
 
 const explore = () => {
   return (
-    <div className='explore-container max-width'>
-      <p>Would you like to upload your restaurant?</p>
-    </div>
-  )
-}
+    <a href="/upload/details">
+      <div className="explore-container max-width">
+        <p>Would you like to upload your restaurant?</p>
+      </div>
+    </a>
+  );
+};
 
-export default explore
+export default explore;
