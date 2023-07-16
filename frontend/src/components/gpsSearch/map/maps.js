@@ -6,6 +6,9 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
+import './map.css'
+import CustomMarker from "../../../assets/icon2.png"
+
 const Maps = (props) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDSMDqx6HgCylt6KnlHdf1-QPeKY7GW5kU",
@@ -42,6 +45,27 @@ const markers = [
     location: {
       lat: -1.1891109370970363,
       lng: 36.932605978858284,
+    },
+  },
+  {
+    name: "Chandarana Foodplus",
+    location: {
+      lat: -1.2602363830215313,
+      lng: 36.841105598708985,
+    },
+  },
+  {
+    name: "Zuchini Groceries",
+    location: {
+      lat: -1.2909020696406623,
+      lng: 36.762617617221785,
+    },
+  },
+  {
+    name: "JavaHouse TRM",
+    location: {
+      lat: -1.219683364052313,
+      lng:  36.8886389769794,
     },
   },
 ];
@@ -95,6 +119,16 @@ function Map() {
             </div>
           </InfoWindow>
         ) : null}
+        {/*
+        <div className="my-location-icon">
+          <MarkerF
+            position={{ lat: -1.1776953356136166, lng: 36.930077753520855 }}
+            options={{
+              icon: CustomMarker,
+            }}
+          />
+        </div>
+        */}
       </GoogleMap>
     </div>
   );
