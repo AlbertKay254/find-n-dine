@@ -1,53 +1,28 @@
 const express = require("express");
 const Restaurant = require("../models/restaurantDetails");
-const Location = require("../models/locationDetails");
-const { Schema } = require("mongoose");
 const Meal = require("../models/mealDetails");
 
 const router = express.Router();
 
 router.post("/restaurant", async (req, res) => {
-  const {
+  const { name, address, contact, website, time_open } = req.body;
+
+  const restaurant = new Restaurant({
     name,
     address,
-    longitude,
-    latitude,
     contact,
     website,
     time_open,
-    category,
-  } = req.body;
-
-  const location = new Location({
-    address,
-    longitude,
-    latitude,
   });
 
-  location
+  restaurant
     .save()
     .then(() => {
-      const restaurant = new Restaurant({
-        name,
-        location: location._id,
-        contact,
-        website,
-        time_open,
-        category,
-      });
-      restaurant
-        .save()
-        .then(() => {
-          res.json(restaurant);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.send("Error creating restaurant");
-        });
+      res.json(restaurant);
     })
     .catch((err) => {
       console.log(err);
-      res.send("Error creating location");
+      res.sendStatus(400);
     });
 });
 
@@ -62,35 +37,27 @@ router.get("/restaurant/:id", async (req, res) => {
 });
 
 router.post("/restaurant/:id/meal", async (req, res) => {
+  const _id = req.params.id;
   const { menu } = req.body;
-  const restaurant = await Restaurant.findById(req.params.id);
-
-  if (!restaurant || !menu) {
-    res.sendStatus(400);
-    return;
-  }
+  const items = [];
 
   for (let i = 0; i < menu.length; i++) {
-    const meal = Meal({ mealName: menu[i].mealName, price: menu[i].price });
-    meal
+    const meal = Meal({
+      mealName: menu[i].name,
+      price: menu[i].price,
+      restaurantId: _id,
+      category: menu[i].category,
+    });
+    await meal
       .save()
-      .then(() => {
-        restaurant.menu.push(meal);
+      .then((data) => {
+        items.push(data);
       })
       .catch((err) => {
-        console.log(e);
+        console.log(err);
       });
   }
-
-  restaurant
-    .save()
-    .then(() => {
-      res.json(restaurant.menu);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.send("Error creating meal");
-    });
+  res.json({ items: items });
 });
 
 module.exports = router;

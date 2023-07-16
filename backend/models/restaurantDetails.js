@@ -8,36 +8,22 @@ const restaurantDetailsSchema = new Schema(
       unique: true,
       required: true,
     },
-
-    location: {
-      type: Schema.Types.ObjectId,
-      unique: true,
-      required: true,
-    },
-
     contact: {
       type: String,
       unique: true,
       required: true,
     },
-
+    address: {
+      type: String,
+      required: true,
+    },
     website: {
       type: String,
       unique: true,
     },
-
     time_open: {
       type: String,
       required: true,
-    },
-
-    category: {
-      type: Array,
-      required: true,
-    },
-
-    menu: {
-      type: Array,
     },
   },
   {

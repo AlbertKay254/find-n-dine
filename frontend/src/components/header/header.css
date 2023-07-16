@@ -1,98 +1,96 @@
 .header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .header-logo {
-    height: 60px;
-    width: 60px;
-    max-width: 140px;
-    margin-right: 24px;
-    border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  max-width: 140px;
+  margin-right: 24px;
+  border-radius: 50%;
 }
 
 .header-right {
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
 }
 
 .header-location-search-container {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: var(--primary-box-shadow);
-    border: 1px solid var(--border-white);
-    width: 70%;
-    background: var(--primary-bg);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: var(--primary-box-shadow);
+  border: 1px solid var(--border-white);
+  width: 70%;
+  background: var(--primary-bg);
 }
 
-
-.location-wrapper{
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    padding: 0px 10px;
+.location-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding: 0px 10px;
 }
 
 .location-icon-name {
-    display: flex;
-    color: var( --font-grey);
+  display: flex;
+  color: var(--font-grey);
 }
 
 .location-icon {
-    color: var(--icon-red);
-    font-size: 20px;
-    margin-right: 12px;
+  color: var(--icon-red);
+  font-size: 20px;
+  margin-right: 12px;
 }
 
 .location-separator {
-    height: 20px;
-    border:solid 0.5px var(--grey);
-    
+  height: 20px;
+  border: solid 0.5px var(--grey);
 }
 
 .header-searchbar {
-    display: flex;
-    flex: 2;
+  display: flex;
+  flex: 2;
+  align-items: center;
 }
 
-.search-icon{
-    margin-left: 8px;
-    color: var(--grey);
-    font-size: 28px;
+.search-icon {
+  margin-left: 8px;
+  color: var(--grey);
+  font-size: 28px;
 }
 
 .profile-image {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
 .search-input {
-    border: none;
-    outline: none;
-    width: 70%;  
-   
+  border: none;
+  outline: none;
+  width: 70%;
 }
 
 .profile-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 13%;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 13%;
+  align-items: center;
 }
 
 .header-username {
-    font-size: 16px;
-    font-weight: 500;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .profile-icon {
-    font-size: 20px;
+  font-size: 20px;
 }

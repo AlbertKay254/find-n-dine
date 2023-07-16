@@ -1,16 +1,13 @@
-import { useContext, useEffect } from "react";
-import { useCookies } from "react-cookie";
-import { UserContext } from "../App";
+import { useEffect } from "react";
+import useAppContext from "../context/global-context";
 
 export default function useAuth() {
-  const [cookies, ,] = useCookies(["user"]);
-  const user = useContext(UserContext) || cookies.user;
+  const { user } = useAppContext();
 
   useEffect(() => {
     if (!user) {
       window.location = "/signin";
     }
   }, [user]);
-
   return user;
 }

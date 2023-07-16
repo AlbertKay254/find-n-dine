@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 import "./signup.css";
 import logo from "../../assets/logo1.png";
+import toaster, { Toaster } from "react-hot-toast";
+import apiCall from "../../helpers/api";
 
 const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:4444/register", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        email,
-        name,
-        pass,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userRegister");
-      });
+    const emailAlreadyExistsToast = () => toaster.error("Email already exists");
+    const somethingWentWrongToast = () => toaster.error("Something went wrong");
+    const successToast = () => toaster.success("Success");
+
+    const res = await apiCall("post", "/api/user", { email, name, pass });
+    if (res && res.status === 200) {
+      successToast();
+      window.location.replace("/signin");
+    } else {
+      if (res && res.status === 400) {
+        emailAlreadyExistsToast();
+      } else {
+        somethingWentWrongToast();
+      }
+    }
   };
 
   return (
@@ -69,7 +68,7 @@ const Signup = (props) => {
           </div>
         </form>
         <button
-          onClick={() => props.onFormSwitch("SignIn")}
+          onClick={() => window.location.replace("/signin")}
           className="register-btn"
         >
           Already Have an account? Sign In here.
@@ -79,6 +78,7 @@ const Signup = (props) => {
       <div className="logo-container">
         <div className="bck-2"></div>
       </div>
+      <Toaster />
     </div>
   );
 };
