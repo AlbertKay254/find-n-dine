@@ -11,17 +11,15 @@ require("dotenv").config();
 
 // middleware
 app.use(cors());
-app.use(morgan("dev"));
+app.use(morgan("common"));
 app.use(express.json({ limit: "1mb" }));
 
 // define routes
-app.use(require("./routes/index"));
-app.use(require("./routes/register"));
-app.use(require("./routes/sign-in"));
-app.use(require("./routes/user"));
-app.use(require("./routes/upload"));
-app.use(require("./routes/review"));
-app.use(require("./routes/restaurant"));
+app.use("/api", require("./routes/index"));
+app.use("/api", require("./routes/user.route"));
+app.use("/api", require("./routes/upload"));
+app.use("/api", require("./routes/review"));
+app.use("/api", require("./routes/restaurant"));
 
 app.use(async (req, res, next) => {
   console.log("Not found");
