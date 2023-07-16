@@ -42,121 +42,132 @@ export default function MenuUploadPage(props) {
   };
 
   return (
-    <div style={{ width: "100vw" }}>
-      <Header />
-      <div className="menu-container">
-        <div style={{ display: "flex" }}>
-          {categories.map(({ type, name }, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                setCurrent(index);
-                setMenu([{ name: "", price: "", category: type }]);
-                setMenuItemCount(1);
-              }}
-              style={{
-                width: "50%",
-                height: "40px",
-                cursor: "pointer",
-                alignItems: "center",
-                justifyContent: "center",
-                display: "flex",
-                border: "1px solid black",
-                borderRadius: "5px",
-                marginBottom: "10px",
-                backgroundColor: current === index ? "lightblue" : "white",
-              }}
-            >
-              {name}
-            </div>
-          ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            width: "70%",
-          }}
-        >
-          <h1>Restaurant menu</h1>
-          <form
-            className="upload-form"
-            onSubmit={submitMenu}
-            style={{ marginTop: "30px" }}
+    <div className="upload-details-container">
+      <div className="max-width" style={{ width: "100vw" }}>
+        <Header />
+        <div className="menu-container">
+          <div style={{ display: "flex" }}>
+            {categories.map(({ type, name }, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  setCurrent(index);
+                  setMenu([{ name: "", price: "", category: type }]);
+                  setMenuItemCount(1);
+                }}
+                style={{
+                  width: "50%",
+                  height: "40px",
+                  cursor: "pointer",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  display: "flex",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                  marginBottom: "10px",
+                  backgroundColor: current === index ? "lightblue" : "white",
+                  margin: "5px",
+                }}
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+            }}
           >
-            <table>
-              <tr>
-                <th>Item Name</th>
-                <th>Item Price</th>
-              </tr>
-              {Array(menuItemCount)
-                .fill()
-                .map((_, i) => (
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        placeholder="enter name here"
-                        onChange={(e) => {
-                          setMenu((prev) => {
-                            prev[i].name = e.target.value;
-                            return prev;
-                          });
-                        }}
-                        required
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        placeholder="enter price here"
-                        onChange={(e) => {
-                          setMenu((prev) => {
-                            prev[i].price = e.target.value;
-                            return prev;
-                          });
-                        }}
-                        required
-                      />
-                    </td>
-                  </tr>
-                ))}
-            </table>
-          </form>
-
-          <div>
-            <button
-              id="outlined-button"
-              onClick={() => {
-                if (menuItemCount > 1) {
-                  setMenuItemCount(menuItemCount - 1);
-                  setMenu((prev) => prev.slice(0, -1));
-                }
+            <h1>Restaurant menu</h1>
+            <form
+              className="upload-form"
+              onSubmit={submitMenu}
+              style={{
+                marginTop: "30px",
+                width: "90%",
               }}
             >
-              Remove menu item
-            </button>
-            <button
-              id="outlined-button"
-              onClick={() => {
-                setMenuItemCount(menuItemCount + 1);
-                setMenu((prev) => [
-                  ...prev,
-                  { name: "", price: "", category: categories[current].type },
-                ]);
-              }}
-            >
-              Add menu item
-            </button>
-          </div>
+              <table
+                style={{
+                  marginTop: "30px",
+                  width: "100%",
+                }}
+              >
+                <tr>
+                  <th>Item Name</th>
+                  <th>Item Price</th>
+                </tr>
+                {Array(menuItemCount)
+                  .fill()
+                  .map((_, i) => (
+                    <tr>
+                      <td>
+                        <input
+                          type="text"
+                          placeholder="enter name here"
+                          onChange={(e) => {
+                            setMenu((prev) => {
+                              prev[i].name = e.target.value;
+                              return prev;
+                            });
+                          }}
+                          required
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          placeholder="enter price here"
+                          onChange={(e) => {
+                            setMenu((prev) => {
+                              prev[i].price = e.target.value;
+                              return prev;
+                            });
+                          }}
+                          required
+                        />
+                      </td>
+                    </tr>
+                  ))}
+              </table>
+            </form>
 
-          <div>
-            <button onClick={submitMenu} className="add-item-button">
-              Submit menu
-            </button>
+            <div>
+              <button
+                id="outlined-button"
+                onClick={() => {
+                  if (menuItemCount > 1) {
+                    setMenuItemCount(menuItemCount - 1);
+                    setMenu((prev) => prev.slice(0, -1));
+                  }
+                }}
+              >
+                Remove menu item
+              </button>
+              <button
+                id="outlined-button"
+                onClick={() => {
+                  setMenuItemCount(menuItemCount + 1);
+                  setMenu((prev) => [
+                    ...prev,
+                    { name: "", price: "", category: categories[current].type },
+                  ]);
+                }}
+              >
+                Add menu item
+              </button>
+            </div>
+
+            <div>
+              <button onClick={submitMenu} className="add-item-button">
+                Submit menu
+              </button>
+            </div>
+            <Toaster />
           </div>
-          <Toaster />
         </div>
       </div>
     </div>

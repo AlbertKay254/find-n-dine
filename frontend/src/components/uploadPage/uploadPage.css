@@ -18,3 +18,8 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+ th {
+  width: 15vw;
+ }
+
+
