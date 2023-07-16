@@ -1,20 +1,15 @@
 const express = require("express");
-const User = require("../models/restaurantDetails");
 const router = express.Router();
+const multer = require("multer");
 
-router.post("/upload", async (req, res) => {
-  const { name, location, category, menuItem } = req.body;
-  const user = new User({
-    name,
-    location,
-    category,
-    menuItem
-  });
-  user.save().catch((err) => {});
-});
+const { storage } = require("../config");
+const upload = multer().single("avatar");
 
-router.get("/upload", async (req, res) => {
-  return res.send("Invalid");
+router.post("/upload", upload, async (req, res) => {
+  if (req.file) {
+    res.send(`/${req.file.path}`);
+  }
+  res.status(500).send("No file");
 });
 
 module.exports = router;

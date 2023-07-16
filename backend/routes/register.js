@@ -10,8 +10,7 @@ router.post("/register", async (req, res) => {
     pass,
   });
   user.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating user");
+    res.status(400).send(err.message);
   });
 });
 
