@@ -3,9 +3,8 @@ const { Schema, model } = mongoose;
 
 const reviewSchema = new Schema(
   {
-    user: {
+    userId: {
       type: Schema.Types.ObjectId,
-      unique: true,
       required: true,
     },
     review: {
@@ -13,13 +12,12 @@ const reviewSchema = new Schema(
       unique: true,
       required: true,
     },
-    restaurant: {
+    restaurantId: {
       type: Schema.Types.ObjectId,
       required: true,
     },
-    likes: {
-      type: Number,
-      required: true,
+    name: {
+      type: String,
     },
   },
   {

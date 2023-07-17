@@ -50,6 +50,7 @@ input {
   height: 30px;
   margin: 5px;
   border-radius: 15px;
+  padding-left: 10px;
 }
 
 button {

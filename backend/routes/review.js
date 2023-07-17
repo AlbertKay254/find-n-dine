@@ -1,61 +1,50 @@
 const express = require("express");
 const router = express.Router();
 const Review = require("../models/reviewDetails");
+const User = require("../models/userDetails");
 const { ObjectId } = require("mongodb");
 
 router.post("/review", async (req, res) => {
-  const { id, review: content, restaurant } = req.body;
+  const { user, review: content, restaurant, name } = req.body;
 
   const review = new Review({
-    user: id,
-    restaurant,
+    userId: user,
+    restaurantId: restaurant,
     review: content,
-    likes: 0,
-    created: Date.now(),
-    last_modified: Date.now(),
+    name: name,
   });
 
-  review.save().catch((err) => {
-    console.log(err);
-    res.send("Error creating review");
-  });
-
-  res.json(review);
+  review
+    .save()
+    .then(() => {
+      res.json(review);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Error from our side");
+    });
 });
 
-router.get("/review/:restaurant", async (req, res) => {
-  const { restaurant } = req.params;
-  const reviews = await Review.find({ restaurant: ObjectId(restaurant) });
-  res.json(reviews);
+router.get("/reviews/:restaurant", async (req, res) => {
+  const restaurant = req.params.restaurant;
+  if (!restaurant) {
+    res.status(400).send("Invalid ID");
+  } else {
+    const reviews = await Review.find({
+      restaurantId: new ObjectId(restaurant),
+    }).limit(10);
+    res.json(reviews);
+  }
 });
 
-router.get("/review/:id", async (req, res) => {
-  const { id } = req.params;
-  const review = await Review.findOne({ _id: ObjectId(id) });
-  res.json(review);
-});
-
-router.put("/review/:id", async (req, res) => {
-  const { id } = req.params;
-  const { review: content } = req.body;
-  const review = await Review.findOne({ _id: ObjectId(id) });
-  review.review = content;
-  review.last_modified = Date.now();
-  review.save().catch((err) => {
-    console.log(err);
-    res.send("Error updating review");
-  });
-  res.json(review);
-});
-
-router.delete("/review/:id", async (req, res) => {
-  const { id } = req.params;
-  const review = await Review.findOne({ _id: ObjectId(id) });
-  review.delete().catch((err) => {
-    console.log(err);
-    res.send("Error deleting review");
-  });
-  res.send("Review deleted");
+router.get("/reviews", async (req, res) => {
+  const reviews = await Review.find().limit(10);
+  const results = [];
+  for (var [i, review] of reviews.entries()) {
+    const user = await User.findById(review.userId);
+    results.push({ ...review.toJSON(), user: user });
+  }
+  res.json(results);
 });
 
 module.exports = router;

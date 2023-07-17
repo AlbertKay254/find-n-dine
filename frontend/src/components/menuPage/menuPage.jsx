@@ -1,44 +1,82 @@
-import React from 'react'
-import './menuPage.css'
-import Menu from './menu/menu'
-import Logo from '../../assets/dominos.jpg'
-import {MdLocationPin} from 'react-icons/md'
-import Header from '../header/header'
-import Review from './review/review'
-import Location from './location/location'
+import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import "./menuPage.css";
+import Menu from "./menu/menu";
+import Header from "../header/header";
+import Review from "./review/review";
+import Location from "./location/location";
+import apiCall from "../../helpers/api";
+import MenuPageHeader from "./menuPageHeader";
+import Maps from '../gpsSearch/map/maps'
 
-const menuPage = () => {
+const MenuPage = () => {
+  const id = window.location.pathname.split("/")[2];
+
+  const [restaurant, setRestaurant] = useState();
+  const [menu, setMenu] = useState();
+  const [reviews, setReviews] = useState();
+
+  const somethingWentWrongToast = () => toast.error("Something went wrong");
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const res = await apiCall("get", `/api/reviews/${id}`);
+      if (res && res.status === 200) {
+        setReviews(res.data);
+        return;
+      }
+      somethingWentWrongToast();
+    };
+
+    fetchReviews();
+  }, []);
+
+  useEffect(() => {
+    const getResources = async () => {
+      const restaurantRes = await apiCall("get", `/api/restaurant/${id}`);
+      const menuRes = await apiCall("get", `/api/restaurant/${id}/menu`);
+
+      if (
+        !menuRes ||
+        menuRes.status != 200 ||
+        !restaurantRes ||
+        restaurantRes.status != 200
+      ) {
+        somethingWentWrongToast();
+      }
+      setRestaurant(restaurantRes.data);
+      setMenu(menuRes.data);
+    };
+    getResources();
+  }, []);
+
+  useEffect(() => {
+    console.log(reviews);
+  }, [reviews]);
+
   return (
-    <div>
-         <Header />
-      <div className="menupage-container max-width">
-       
-        <div className="menupage-header">
-            <img src={Logo} alt="logo" />
-            <div className='brand-description'>
-                <h3>Dominos pizza</h3>
-                <p>Open between 8:00am to 10:00pm</p>
-                <p>Contact: +254 7000000</p>
-                <div className='category'>category: Fast Food</div>
-                <div className='location'>
-                    < MdLocationPin className='pin-icon' />
-                    <div>Kahawa Sukari, Nairobi</div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div className="menu-container">
-            <div className="menu-items">
-            <Menu />
-            </div>
-        </div>
-        < Location />
-        < Review />
+    <div className="menupage-primary">
+      <Header />
+      <div
+        className="max-width"
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
+        }}
+      >
+        {restaurant && <MenuPageHeader restaurant={restaurant} />}
+        <hr />
+        {menu && <Menu menu={menu} />}
+        <hr />
+        <Location />
+        <hr />
+        {reviews && <Review id={id} reviews={reviews} />}
       </div>
-     
+      <Toaster />
     </div>
-  )
-}
+  );
+};
 
-export default menuPage
+export default MenuPage;

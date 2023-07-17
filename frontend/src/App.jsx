@@ -5,6 +5,7 @@ import { CookiesProvider } from "react-cookie";
 import Signin from "./components/signin/signin";
 import Signup from "./components/signup/signup";
 import Homepage from "./components/homepage/homepage";
+import MenuPage from "./components/menuPage/menuPage";
 import MenuUploadPage from "./components/uploadPage/menuDetails";
 import { AppContextWrapper } from "./context/global-context";
 import LogoutPage from "./components/logout/logout";
@@ -31,6 +32,10 @@ const App = () => {
     {
       path: "/upload/menu/:id",
       element: <MenuUploadPage />,
+    },
+    {
+      path: "/restaurant/:id",
+      element: <MenuPage />,
     },
     {
       path: "/logout",

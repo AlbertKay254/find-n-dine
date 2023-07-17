@@ -1,12 +1,21 @@
- .restaurant-form-container{
-
+.restaurant-form-container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-image: url(../../assets/rest5.jpg);
   opacity: 80%;
   background-size: cover;
- }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 label {
-    color: white;
+  color: white;
+}
+
+.image-upload-container {
+  margin-top: -34px;
 }

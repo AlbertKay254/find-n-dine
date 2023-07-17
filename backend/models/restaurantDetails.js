@@ -25,6 +25,9 @@ const restaurantDetailsSchema = new Schema(
       type: String,
       required: true,
     },
+    url: {
+      type: String,
+    },
   },
   {
     collection: "RestaurantInfo",

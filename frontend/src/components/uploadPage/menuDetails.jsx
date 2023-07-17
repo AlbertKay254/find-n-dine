@@ -4,6 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import "./uploadPage.css";
 import Header from "../header/header";
 import apiCall from "../../helpers/api";
+import MenuPageHeader from "../menuPage/menuPageHeader";
 
 export default function MenuUploadPage(props) {
   const id = window.location.pathname.split("/")[3];
@@ -22,6 +23,11 @@ export default function MenuUploadPage(props) {
     { name: "", price: "", category: categories[current].type },
   ]);
 
+  const clearForm = () => {
+    setMenuItemCount(0);
+    setMenu([{ name: "", price: "", category: categories[current].type }]);
+  };
+
   const submitMenu = (e) => {
     e.preventDefault();
 
@@ -32,6 +38,7 @@ export default function MenuUploadPage(props) {
         console.log(data);
         if (status === 200) {
           toast.success("Menu uploaded successfully");
+          clearForm();
         } else {
           toast.error("Error uploading menu");
         }
@@ -45,6 +52,7 @@ export default function MenuUploadPage(props) {
     <div className="upload-details-container">
       <div className="max-width" style={{ width: "100vw" }}>
         <Header />
+        <MenuPageHeader id={id} />
         <div className="menu-container">
           <div style={{ display: "flex" }}>
             {categories.map(({ type, name }, index) => (
