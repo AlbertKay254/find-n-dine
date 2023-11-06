@@ -11,7 +11,7 @@ module.exports.storage = multer.diskStorage({
 });
 
 module.exports.intializeDatabase = async () => {
-  const url = "mongodb://localhost:27017/findNdine";
+  const url = "mongodb://0.0.0.0:27017/findNdine";
   try {
     await mongoose.connect(url);
     console.log("Connected to MongoDB");

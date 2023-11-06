@@ -75,6 +75,7 @@ const MenuPage = () => {
         {reviews && <Review id={id} reviews={reviews} />}
       </div>
       <Toaster />
+      
     </div>
   );
 };
